@@ -84,6 +84,7 @@ const injectNodes = nodeDataPairs => {
   });
 };
 
+const nav = document.querySelector('nav');
 const navItems = document.querySelectorAll("nav>a");
 const navImage = document.querySelector("#logo-img");
 const h1 = document.querySelector("h1");
@@ -104,6 +105,7 @@ const contactData = extractData(siteContent.contact, /address|phone|email/)
 navItems.forEach((node, index) => {
   const [_, value] = navEntries[index];
   node.textContent = value;
+  node.style.color = 'green';
 });
 
 injectNodes([
@@ -128,3 +130,19 @@ injectDataList(pElements, contentData);
 injectDataList(contactPElements, contactData);
 
 // console.log(contacth4, contactPElements)
+
+// change text of nav to be green
+const anchors = ['Login', 'Register'];
+anchors.forEach(nodeName => {
+  const a = document.createElement('a');
+  a.href = '#';
+  a.textContent = nodeName;
+  a.style.color = 'green';
+  nav.appendChild(a);
+  // can also do nav.prepend(a)
+})
+
+const login = document.createElement('a');
+login.href = '#';
+login.textContent = 'Login';
+
